@@ -1,0 +1,70 @@
+/* 
+    Created on : May 9, 2015, 2:19:21 PM
+    Author     : Architect
+*/
+
+body {
+    
+    background-color:white;
+    
+}
+
+#main-header {
+    
+    text-align:center;
+    
+}
+
+#icons {
+    
+    margin-left: auto;
+    margin-right: auto;
+    width: 524px;
+    
+}
+
+#menu-buttons {
+    
+    margin-left: auto;
+    margin-right: auto;
+    width: 524px;
+    text-align: center;
+    padding-top: 15px;
+    
+}
+
+#calendar-form {
+    
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+    
+}
+
+table.schedule {
+    
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    
+}
+
+#icon:hover {
+    
+    -webkit-animation: rotate .25s;
+    animation: rotate 2s;
+    
+}
+
+@-webkit-keyframes rotate {
+    
+    100% {-webkit-transform: rotate(360deg);}
+    
+}
+
+@keyframes rotate {
+    
+    50% {transform: rotate(360deg);}
+    
+}
