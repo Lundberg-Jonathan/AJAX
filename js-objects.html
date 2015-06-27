@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+Topics covered in this page:
+    - Object Creation, Functions, Inheritance, Properties, Methods, Instantiation
+-->
+<html>
+    <head>
+        <title>JavaScript Objects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var string = new String;
+            var array = new Array;
+            
+            function addToArray() {
+                string = document.getElementById("array-item").value;
+                if (string.length < 1) {
+                    alert("Cannot be an empty string.  Please try again.");
+                    return;
+                }
+                array.push(string);
+                
+                document.getElementById("array-result").innerHTML = "The array now has "
+                + array.length + " items in it: " + array;
+        
+                document.getElementById("array-item").value = "";
+            }
+            
+            function clearArray() {
+                array = [];
+                
+                document.getElementById("array-result").innerHTML = "The array now has "
+                + array.length + " items in it.";
+            }
+            
+            function stringLength() {
+                string = document.getElementById("string-item").value;
+                document.getElementById("string-result").innerHTML = "The string "
+                + string + " is " + string.length + " characters long.";
+            }
+        </script>   
+    </head>
+    <body>
+        <div id="array-control">
+        <p>JavaScript objects have attributes, just like any real-world object.
+            A person has height, weight, etc.  A JavaScript object can have height,
+            width, etc.  Today we will be looking over some of the more common
+            JavaScript objects, arrays and strings, as well as some of their attributes.</p>
+        
+        <h2>Array</h2>
+        <p>Use the field below to add to the array.  Arrays have an attribute called
+        length which gives us the size of the array (how many items are in the array).
+        Each time you add something to the array using this field, the length of the
+        array increases.</p>
+        <input id="array-item" type="text" />
+        <button id="array-submit" type="submit" onclick="addToArray()">Add to the Array</button>
+        <br />
+        <button id="clear-array" type="submit" onclick="clearArray()">Clear the Array</button>
+        </div>
+        <div id="array-result"></div>
+        <br />
+        <br />
+        <div id="string-control">
+            <h2>String</h2>
+            <p>Use the field below to evaluate the length of a string.  Strings also
+                have an attribute called length which will allow you to check the length
+                of a field.  This could be useful in ensuring that a username or password
+                matches certain length policies in place.</p>
+            <input id="string-item" type="text" />
+            <button id="string-submit" type="submit" onclick="stringLength()">Evaluate String Length</button>
+        </div>
+            <div id="string-result"></div>
+    </body>
+</html>

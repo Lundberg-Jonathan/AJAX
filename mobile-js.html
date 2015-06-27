@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Topics covered in this page:
+    - Standard JavaScript Events Including those for Mobile Devices (Ex. onTouchBegin, onLoad, etc.)
+-->
+<html>
+    <head>
+        <title>Mobile JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="drawing.css" />
+        <script type="text/javascript">
+            addEventListener("touchmove", function(e) {
+                e.preventDefault();
+                
+                var touch = e.touches[0];
+                var posY = touch.pageY - 25;
+                var posX = touch.pageX - 25;
+                
+                if (e.touches.length == 1) {
+                    var blue = document.createElement("div");
+                    blue.setAttribute("class", "blue");
+                    blue.style.top = posY + "px";
+                    blue.style.left = posX + "px";
+                    
+                    document.body.appendChild(blue);
+                }
+            }, false);
+            
+            function resetButton() {
+                var resetButton = document.createElement("BUTTON");
+                var buttonText = document.createTextNode("RESET");
+                
+                resetButton.appendChild(buttonText);
+                document.body.appendChild(resetButton);
+            }
+            window.onload = resetButton();
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <h2>Drawing Time!</h2>
+            <p>Feel free to draw wherever you like!</p>
+        </div>
+    </body>
+</html>

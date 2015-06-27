@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+Topics covered in this page:
+    - Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects
+-->
+<html>
+    <head>
+        <title>Local Storage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function addToList() {
+                var table = document.getElementById("to-do-list");
+                var tableSize = table.rows.length;
+                var row = table.insertRow(tableSize);
+                var listItem = row.insertCell(0);
+                var remove = row.insertCell(1);
+                var input = document.createElement("input");
+                var checkBox = document.createElement("input");
+                
+                input.type = "text";
+                checkBox.type = "checkbox";
+                listItem.appendChild(input);
+                input.id = "list-item";
+                remove.appendChild(checkBox);
+                checkBox.addEventListener('click', function() {
+                    var table = document.getElementById("to-do-list");
+                    var box = this.parentNode;
+                    //alert("Row index is " + box.parentNode.rowIndex);
+                    table.deleteRow(box.parentNode.rowIndex);
+                }, false);
+            }
+            
+            function removeFromList(x) {
+                var table = document.getElementById("to-do-list");
+                var box = x.parentNode;
+                //alert("Row index is " + box.parentNode.rowIndex);
+                
+                table.deleteRow(box.parentNode.rowIndex);
+                
+            }
+            
+            function saveList() {
+                var list = new Array;
+                var table = document.getElementById("to-do-list");
+                var tableSize = table.rows.length;
+                
+                for (i = 1; i <= tableSize-1; i++) {
+                    //list.push(document.getElementById("list-item").value);
+                    list.push(table.rows[i].cells[0].firstChild.value);
+                }
+                
+                alert("Contents of list: " + list);
+                
+                localStorage.toDoList = list;
+            }
+            
+            function retrieveList() {
+                
+                var listCopy = localStorage.toDoList;
+                
+                document.getElementById("results").innerHTML = listCopy;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="header"><h2>To-do List</h2></div>
+        <div id="content">
+            <table id="to-do-list">
+                <tbody>
+                <tr>
+                    <th>To-Do Item</th>
+                    <th>Remove</th>
+                </tr>
+                <tr>
+                    <td><input id="list-item" type="text" /></td>
+                    <td><input type="checkbox" onclick="removeFromList(this)"/></td>
+                </tr>
+                </tbody>
+            </table>
+            <button id="add-to-do-item" type="button" onclick="addToList()">Add Item</button>
+            <button id="submit" type="submit" onclick="saveList()">Save List</button>
+            <button id="retrieve-list" type="button" onclick="retrieveList()">Retrieve List</button>
+        </div>
+        <div id="results">
+            <p>The contents of the local storage will be displayed here.</p>
+        </div>
+    </body>
+</html>

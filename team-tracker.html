@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JSON</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="header">
+            <h2>New Player</h2>
+            <p>Please provide the following information</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>First Name</td>
+                        <td><input id="first-name" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td><input id="last-name" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td><select id="position">
+                                <option value="Point Guard">Point Guard</option>
+                                <option value="Shooting Guard">Shooting Guard</option>
+                                <option value="Small Forward">Small Forward</option>
+                                <option value="Power Forward">Power Forward</option>
+                                <option value="Center">Center</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>Jersey Number</td>
+                        <td><select id="jersey-number"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Height</td>
+                        <td><select id="height"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td><input id="weight" type="text" size="3"/>&nbsp;lbs</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button id="add-player" type="submit">Add Player</button>
+                    </tr>
+                </tbody>
+            </table>
+            <script type="text/javascript">
+            function loadJerseyNumbers() {
+                var dropdown=document.getElementById("jersey-number");
+                for(var i=1;i<=100;i++) {
+                    var newOption = document.createElement("OPTION");
+                    var optionText = document.createTextNode(i);
+                    newOption.appendChild(optionText);
+                    newOption.value= i.toString();
+                    dropdown.appendChild(newOption);
+                }
+            }
+            function loadHeight() {
+                var dropdown=document.getElementById("height");
+                var height;
+                for (var f = 5; f <= 7; f++) {
+                    for (var i = 1; i <= 11; i++) {
+                        var newOption = document.createElement("OPTION");
+                        var optionText = document.createTextNode(f + "'" + i + "\"");
+                        newOption.appendChild(optionText);
+                        newOption.value=(f + "'" + i + "\"");
+                        dropdown.appendChild(newOption);
+                    }
+                }
+            }
+window.onload=loadJerseyNumbers();
+window.onload=loadHeight();
+</script>
+        </div>
+    </body>
+</html>

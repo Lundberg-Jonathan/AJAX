@@ -3,11 +3,6 @@
     Author     : Architect
 */
 
-body {
-    
-    background-color:white;
-    
-}
 
 #main-header {
     
@@ -65,6 +60,64 @@ table.schedule {
 
 @keyframes rotate {
     
-    50% {transform: rotate(360deg);}
+    100% {transform: rotate(360deg);}
     
+}
+
+.turn-left {
+    animation: left 3s linear;
+    -webket-animation: left 3s linear;
+}
+
+@keyframes left {
+    25% {transform: rotate(-10deg);}
+    75% {transform: rotate(-10deg);}
+    100% {transform: rotate(0);}
+}
+
+@-webkit-keyframes left {
+    50% {-webkit-transform: rotate(-10deg);}
+    75% {-webkit-transform: rotate(-10deg);}
+    100% {-webkit-transform: rotate(0);}
+}
+
+.turn-right {
+    animation: right 3s linear;
+    -webket-animation: right 3s linear;
+}
+
+@keyframes right {
+    25% {transform: rotate(10deg);}
+    75% {transform: rotate(10deg);}
+    100% {transform: rotate(0);}
+}
+
+@-webkit-keyframes right {
+    50% {-webkit-transform: rotate(10deg);}
+    75% {-webkit-transform: rotate(10deg);}
+    100% {-webkit-transform: rotate(0);}
+}
+
+.boost {
+    animation: boost .5s linear;
+    -webkit-animation: boost .5s linear;
+}
+
+@keyframes boost {
+    25% {transform: scale(2.0);}
+    75% {transform: scale(2.0);}
+    100% {transform: scale(1.0);}
+}
+
+@-webkit-keyframes boost {
+    25% {-webkit-transform: scale(2.0);}
+    75% {-webkit-transform: scale(2.0);}
+    100% {-webkit-transform: scale(1.0);}
+}
+
+img {
+    display: block;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
 }

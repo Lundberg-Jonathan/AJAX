@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+Topics covered in this page:
+    - Manipulating CSS Class Properties Using JavaScript
+    - DOM Manipulation Using createElement, appendChild
+    - Object Creation, Inheritance, Properties, Methods, Instantiation
+-->
+<html>
+    <head>
+        <title>DOM Manipulation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var doc = document.getElementById("content");
+            var newButton;
+            function makeBlue() {
+                document.getElementById("content").style.color="blue";
+            }
+            
+            function moveContent() {
+                document.getElementById("new-content").innerHTML = document.getElementById("content").innerHTML;
+                document.getElementById("content").innerHTML = "This content has been moved.";
+            }
+            
+            function newElement() {
+                newButton = document.createElement("BUTTON");
+                var buttonText = document.createTextNode("CLICK AT YOUR OWN RISK");
+                var onClickAttribute = document.createAttribute("onclick");
+                onClickAttribute.value = "funnyJoke()";
+                newButton.setAttributeNode(onClickAttribute);
+                newButton.appendChild(buttonText);
+                document.body.appendChild(newButton);
+            }
+            
+            function funnyJoke() {
+                alert("IS YOUR COMPUTER RUNNING???\n\
+        \n\
+WELL THEN...YOU BETTER GO CATCH IT!!!");
+            }
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+        <div id="content">
+            <h2>DOM Manipulation</h2>
+            <p>We've seen some basic DOM manipulation in some of my previous sandbox
+                code.  If you want to re-visit them, visit my <a href="ajax.html">AJAX</a>
+                and <a href="js-objects.html">JavaScript Objects</a> pages.  On
+                the AJAX page, DOM Manipulation is used to append content to existing
+                elements.</p>
+            <p>DOM Manipulation can also be used for other things, such as changing
+                the CSS if you want your users to be able to choose how things look.
+                For instance, clicking the button below will change all this text to
+                the color blue.</p>
+            <button id="color-change" type="button" onclick="makeBlue()">Turn Blue</button>
+        </div>
+        <div>
+            <p>DOM can also be used to move content to different locations without changing it.</p>
+            <p>Click the button below to move the above content down here.</p>
+            <button id="move-content" type="button" onclick="moveContent()">Move Content</button>
+        </div>
+        <div id="new-content"></div>
+        <div id="creation">
+            <p>You can even create entire elements and give them attributes using DOM!</p>
+            <button id="create-element" type="button" onclick="newElement()">Create</button>
+        </div>
+        </div>
+    </body>
+</html>

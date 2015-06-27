@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+Topics covered in this page:
+    - Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays
+    - JSON Parse, Stringify
+    - Standard JavaScript Events Including those for Mobile Devices (Ex. onTouchBegin, onLoad, etc.)
+
+-->
+<html>
+    <head>
+        <title>JSON</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var team = new Array;
+            var player;
+            function addPlayer() {
+                if (document.getElementById("first-name").value == ""
+                ||  document.getElementById("last-name").value == ""
+                ||  document.getElementById("position").value == ""
+                ||  document.getElementById("jersey-number").value == ""
+                ||  document.getElementById("height").value == ""
+                ||  document.getElementById("weight").value == "") {
+                    alert("Please include all fields in the form.");
+                }
+                
+                else {
+                    player = {
+                        firstName: document.getElementById("first-name").value,
+                        lastName: document.getElementById("last-name").value,
+                        position: document.getElementById("position").value,
+                        jerseyNumber: document.getElementById("jersey-number").value,
+                        height: document.getElementById("height").value,
+                        weight: document.getElementById("weight").value
+                    };               
+                    team.push(player);
+                    alert(player.firstName + " " + player.lastName + " has been added to the team!");
+                
+                    listPlayers(JSON.stringify(team));
+                }
+            }
+            
+            function listPlayers(teamList) {
+                var players = JSON.parse(teamList);
+                var output = "";
+                
+                for (i = 0; i < players.length; i++) {
+                    output += "<tr><td>" + players[i].firstName + "</td>\n\
+                                   <td>" + players[i].lastName + "</td>\n\
+                                   <td>" + players[i].position + "</td>\n\
+                                   <td>" + players[i].jerseyNumber + "</td>\n\
+                                   <td>" + players[i].height + "</td>\n\
+                                   <td>" + players[i].weight + "</td></tr>";
+                }
+                
+                document.getElementById("result").innerHTML = "<table><tr><td><strong>FirstName</strong></td>\n\
+                                                                          <td><strong>LastName</strong></td>\n\
+                                                                          <td><strong>Position</strong></td>\n\
+                                                                          <td><strong>Jersey</strong></td>\n\
+                                                                          <td><strong>Height</strong></td>\n\
+                                                                          <td><strong>Weight</strong></td></tr>"+output+"</table>";
+            }
+        </script>
+    </head>
+    <body>
+        <div id="header">
+            <h2>New Player</h2>
+        </div>
+        <div id="player-entry">
+            <p>Please provide the following information</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>First Name</td>
+                        <td><input id="first-name" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td><input id="last-name" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td><select id="position">
+                                <option></option>
+                                <option value="Point Guard">Point Guard</option>
+                                <option value="Shooting Guard">Shooting Guard</option>
+                                <option value="Small Forward">Small Forward</option>
+                                <option value="Power Forward">Power Forward</option>
+                                <option value="Center">Center</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>Jersey Number</td>
+                        <td><select id="jersey-number">
+                                <option></option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Height</td>
+                        <td><select id="height">
+                                <option></option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td><input id="weight" type="text" size="3"/>&nbsp;lbs</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button id="add-player" type="submit" onclick="addPlayer()">Add Player</button>
+                    </tr>
+                </tbody>
+            </table>
+            <script type="text/javascript">
+            function loadJerseyNumbers() {
+                var dropdown=document.getElementById("jersey-number");
+                for(var i=1;i<=100;i++) {
+                    var newOption = document.createElement("OPTION");
+                    var optionText = document.createTextNode(i);
+                    newOption.appendChild(optionText);
+                    newOption.value= i.toString();
+                    dropdown.appendChild(newOption);
+                }
+            }
+            function loadHeight() {
+                var dropdown=document.getElementById("height");
+                var height;
+                for (var f = 5; f <= 7; f++) {
+                    for (var i = 1; i <= 11; i++) {
+                        var newOption = document.createElement("OPTION");
+                        var optionText = document.createTextNode(f + "'" + i + "\"");
+                        newOption.appendChild(optionText);
+                        newOption.value=(f + "'" + i + "\"");
+                        dropdown.appendChild(newOption);
+                    }
+                }
+            }
+window.onload=loadJerseyNumbers();
+window.onload=loadHeight();
+</script>
+        </div>
+        <div id="result"></div>
+    </body>
+</html>

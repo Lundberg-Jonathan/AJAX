@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Topics covered in this page:
+    - Triggering CSS3 Transitions and Animations with JavaScript
+-->
+<html>
+    <head>
+        <title>Control the Plane!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="jdlundberg.css" />
+        <style type="text/css">
+        </style>
+        <script>
+            function left() {
+                var plane = document.getElementById("plane");
+                var attribute = document.createAttribute("class");
+                
+                attribute.value = "turn-left";
+                plane.setAttributeNode(attribute);
+            }
+            
+            function right() {
+                var plane = document.getElementById("plane");
+                var attribute = document.createAttribute("class");
+                
+                attribute.value = "turn-right";
+                plane.setAttributeNode(attribute);
+            }
+            
+            function boost() {
+                var plan = document.getElementById("plane");
+                var attribute = document.createAttribute("class");
+                
+                attribute.value = "boost";
+                plane.setAttributeNode(attribute);
+            }
+        </script>
+    </head>
+    <body style="background-color: black;">
+        <img id="plane" src="images/plane.jpg" alt="plane"/>
+        <button id="left" type="button" style="margin-left: 20px; margin-top: 50px;" onclick="left()">LEFT</button>
+        <button id="right" type="button" style="margin-left: 20px; margin-top: 50px;" onclick="right()">RIGHT</button>
+        <button id="boost" type="button" style="margin-left: 20px; margin-top: 50px;" onclick="boost()">BOOST</button>
+    </body>
+</html>
